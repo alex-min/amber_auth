@@ -31,4 +31,41 @@ module AmberAuth::CLI
     end    
   end
 end
+
+module Amber::CLI
+  class CrectoDevise < AuthBase
+    directory "#{__DIR__}/../templates/devise/crecto"
+  end
+end
+
+module Amber::CLI
+  class GraniteDevise < AuthBase
+    directory "#{__DIR__}/../templates/devise/granite"
+  end
+end
+
+
+module Amber::CLI
+  class Devise < Generator
+    command :devise
+    property auth : Generator
+
+    def initialize(name, fields)
+      super(name, fields)
+      if config.model == "crecto"
+        @auth = CrectoDevise.new(name, fields)
+      else
+        @auth = GraniteDevise.new(name, fields)
+      end
+    end
+
+    def render(directory)
+      auth.render(directory)
+    end
+  end
+end
+
+Amber::CLI::Devise.new("ff", [] of String).render("abc")
+
+puts Amber::CLI::Generator.registered_commands
 AmberAuth::CLI::MainCommand.run ARGV
