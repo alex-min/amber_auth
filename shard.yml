@@ -7,3 +7,11 @@ authors:
 crystal: 0.27.2
 
 license: MIT
+
+dependencies:
+  teeplate:
+    github: mosop/teeplate
+
+  cli:
+    github: mosop/cli
+    version: ~> 0.7.0
