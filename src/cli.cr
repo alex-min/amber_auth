@@ -1,4 +1,11 @@
 require "cli"
+require "yaml"
+require "teeplate"
+require "amber/exceptions/exceptions"
+require "amber/cli/config"
+require "amber/cli/generators/generator"
+require "amber/environment"
+require "amber/cli/commands"
 
 module AmberAuth::CLI
   class MainCommand < ::Cli::Supercommand
