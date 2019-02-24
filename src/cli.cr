@@ -65,7 +65,7 @@ module Amber::CLI
   end
 end
 
-Amber::CLI::Devise.new("ff", [] of String).render("abc")
+Amber::CLI::Devise.new("ff", [] of String).render("./abc")
 
 puts Amber::CLI::Generator.registered_commands
 AmberAuth::CLI::MainCommand.run ARGV
